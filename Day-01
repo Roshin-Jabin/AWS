@@ -1,0 +1,361 @@
+# ☁️ AWS Learning Notes
+
+> **Personal AWS learning notes** documenting the fundamentals of Cloud Computing and AWS Identity and Access Management (IAM). These notes are created as part of my AWS learning journey and are intended for quick revision and beginner-friendly understanding.
+
+---
+
+## 📖 Table of Contents
+
+- [Cloud Computing](#-cloud-computing)
+- [Cloud Deployment Models](#-cloud-deployment-models)
+- [Private Cloud](#1-private-cloud)
+- [Public Cloud](#2-public-cloud)
+- [Why Public Cloud?](#-why-public-cloud-is-popular)
+- [Why AWS?](#-why-aws)
+- [Why Companies Migrate to Public Cloud](#-why-companies-migrate-to-public-cloud)
+- [Getting Started with AWS](#-getting-started-with-aws)
+- [AWS IAM (Identity and Access Management)](#-aws-iam-identity-and-access-management)
+- IAM Users
+- IAM Groups
+- IAM Roles
+- [Authentication vs Authorization](#-authentication-vs-authorization)
+- [Summary](#-summary)
+
+---
+
+# ☁️ Cloud Computing
+
+Cloud Computing is the delivery of computing services such as servers, storage, networking, databases, and applications over the internet.
+
+Instead of purchasing and maintaining physical hardware, organizations can create Virtual Machines (VMs) and deploy applications from anywhere in the world.
+
+## Traditional Infrastructure
+
+- Purchase physical servers
+- Install operating systems
+- Configure networking
+- Maintain hardware
+- Monitor servers
+- Upgrade infrastructure manually
+
+## Cloud Infrastructure
+
+- Create Virtual Machines (VMs)
+- Deploy applications quickly
+- Scale resources on demand
+- Access services globally
+- Pay only for resources used
+
+---
+
+# 🌍 Cloud Deployment Models
+
+## 1. Private Cloud
+
+A **Private Cloud** is dedicated to a single organization.
+
+### Features
+
+- Infrastructure owned by the organization
+- High level of security
+- Greater control over resources
+- Managed internally or by a private provider
+- Suitable for organizations with strict compliance requirements
+
+### Example
+
+A company maintaining its own data center and virtualization infrastructure.
+
+---
+
+## 2. Public Cloud
+
+A **Public Cloud** is owned and maintained by cloud providers.
+
+Examples include:
+
+- Amazon Web Services (AWS)
+- Microsoft Azure
+- Google Cloud Platform (GCP)
+
+Cloud providers manage:
+
+- Data Centers
+- Physical Servers
+- Storage
+- Networking
+- Security Infrastructure
+
+Customers simply request cloud resources like Virtual Machines, Storage, or Databases without worrying about hardware maintenance.
+
+---
+
+# ⭐ Why Public Cloud is Popular
+
+Public cloud has become the preferred choice for many organizations because it eliminates infrastructure management.
+
+## Advantages
+
+- No data center maintenance
+- No physical server management
+- No hardware procurement
+- Easy scalability
+- Global availability
+- Faster deployments
+- High reliability
+- Reduced operational costs
+- Pay-as-you-go pricing
+
+---
+
+# 🚀 Why AWS?
+
+AWS (Amazon Web Services) is one of the world's leading cloud platforms.
+
+## Why AWS is Popular
+
+- Pioneer in cloud computing
+- Largest global cloud infrastructure
+- Highly reliable
+- Secure platform
+- Hundreds of cloud services
+- Massive community support
+- Pay only for what you use
+- Excellent documentation
+
+Many organizations started their cloud journey using AWS because of its maturity and wide adoption.
+
+---
+
+# 🔄 Why Companies Migrate to Public Cloud
+
+Organizations are increasingly moving from traditional infrastructure to the public cloud.
+
+## Reasons
+
+- Cost optimization
+- Reduced infrastructure maintenance
+- No need to maintain data centers
+- Better scalability
+- Faster deployments
+- High availability
+- Global accessibility
+- Improved operational efficiency
+
+---
+
+# 🛠 Getting Started with AWS
+
+Typical first steps:
+
+1. Create an AWS Account
+2. Sign in to the AWS Management Console
+3. Explore AWS Services
+4. Create IAM Users
+5. Assign Permissions
+6. Launch cloud resources securely
+
+---
+
+# 🔐 AWS IAM (Identity and Access Management)
+
+AWS IAM is a service that manages **Authentication** and **Authorization** for AWS resources.
+
+It enables administrators to securely control access to AWS services.
+
+IAM allows administrators to:
+
+- Create Users
+- Create Groups
+- Create Roles
+- Assign Permissions
+- Apply Security Policies
+
+---
+
+## 👤 IAM Users
+
+An IAM User represents an individual who requires access to AWS.
+
+Each IAM User can have:
+
+- Username
+- Password
+- Access Keys
+- MFA (Multi-Factor Authentication)
+
+### Best Practice
+
+Avoid using the **Root User** for daily work.
+
+Instead, create IAM users with only the permissions they require.
+
+---
+
+## 👥 IAM Groups
+
+IAM Groups help simplify permission management.
+
+Instead of assigning permissions individually to every user, permissions are assigned to the group.
+
+### Example
+
+```
+Developers Group
+│
+├── User A
+├── User B
+└── User C
+```
+
+If a permission is attached to the Developers Group, every member automatically inherits those permissions.
+
+### Benefits
+
+- Easy management
+- Centralized permissions
+- Less administrative effort
+- Better security
+
+---
+
+## 🎭 IAM Roles
+
+IAM Roles provide temporary permissions.
+
+Unlike IAM Users, Roles do not have permanent login credentials.
+
+Roles are commonly used by:
+
+- EC2 Instances
+- Lambda Functions
+- AWS Services
+- Cross-account access
+- Temporary users
+
+Roles automatically grant temporary permissions whenever required.
+
+---
+
+# 🔑 Authentication vs Authorization
+
+## Authentication
+
+Authentication answers:
+
+> **Who are you?**
+
+Authentication verifies the identity of the user.
+
+Examples
+
+- Username
+- Password
+- Access Keys
+- Multi-Factor Authentication (MFA)
+
+---
+
+## Authorization
+
+Authorization answers:
+
+> **What are you allowed to do?**
+
+Authorization determines what AWS resources a user can access.
+
+Examples
+
+- Read S3 Buckets
+- Launch EC2 Instances
+- Create IAM Users
+- Access RDS Databases
+
+Permissions are controlled using **IAM Policies**.
+
+---
+
+# 🔄 Authentication & Authorization Flow
+
+```
+User
+│
+▼
+Authentication
+(Verify Identity)
+│
+▼
+Authorization
+(Check IAM Policies)
+│
+▼
+Access AWS Services
+```
+
+---
+
+# 📌 Best Practices
+
+- Never use the Root User for daily activities.
+- Follow the Principle of Least Privilege.
+- Use IAM Groups to manage permissions.
+- Use IAM Roles for AWS services.
+- Enable Multi-Factor Authentication (MFA).
+- Rotate access keys regularly.
+- Grant only the permissions required.
+
+---
+
+# 📚 Topics Covered
+
+- Cloud Computing
+- Virtual Machines (VM)
+- Private Cloud
+- Public Cloud
+- Benefits of Public Cloud
+- AWS Overview
+- Cloud Migration
+- AWS Account
+- IAM
+- IAM Users
+- IAM Groups
+- IAM Roles
+- Authentication
+- Authorization
+- IAM Best Practices
+
+---
+
+# 🎯 Summary
+
+Cloud Computing allows organizations to deploy applications without managing physical infrastructure.
+
+Public cloud providers like AWS manage hardware, networking, storage, and security, enabling customers to focus on application development.
+
+AWS Identity and Access Management (IAM) is one of the most important AWS services. It helps securely manage users, permissions, groups, and roles by ensuring that users receive only the access they need.
+
+Understanding these core concepts provides a strong foundation for learning advanced AWS services such as EC2, S3, VPC, RDS, Lambda, and more.
+
+---
+
+## 📖 Learning Progress
+
+- ✅ Cloud Computing Basics
+- ✅ Private Cloud
+- ✅ Public Cloud
+- ✅ AWS Introduction
+- ✅ Benefits of Cloud
+- ✅ AWS IAM
+- ✅ IAM Users
+- ✅ IAM Groups
+- ✅ IAM Roles
+- ✅ Authentication
+- ✅ Authorization
+
+---
+
+## ⭐ Repository Purpose
+
+This repository contains my personal AWS learning notes created while studying Amazon Web Services. The goal is to build a beginner-friendly reference that can be used for revision and interview preparation.
+
+If these notes help you, feel free to ⭐ the repository.
