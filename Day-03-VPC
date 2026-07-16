@@ -1,0 +1,297 @@
+ 🌐 AWS Virtual Private Cloud (VPC)
+**Amazon Virtual Private Cloud (Amazon VPC)** enables you to create a logically isolated network within AWS where you can securely launch and manage your cloud resources. It gives you complete control over networking, security, routing, and internet access.
+
+📖 Table of Contents:-
+- What is Amazon VPC?
+- Why Do We Need VPC?
+- Components of a VPC
+- Public and Private Subnets
+- Internet Gateway
+- NAT Gateway
+- Route Tables
+- Security Groups
+- AWS Regions & Availability Zones
+- VPC Request Flow
+- Best Practices
+- Summary
+
+☁️ What is Amazon VPC?
+Amazon Virtual Private Cloud (VPC) is a logically isolated virtual network inside AWS where you can launch AWS resources such as EC2 instances, databases, and load balancers securely.
+A VPC allows organizations to:
+- Build private cloud infrastructure
+- Control network traffic
+- Secure applications
+- Manage IP addressing
+- Separate workloads using subnets
+Each VPC belongs to a specific AWS Region.
+
+❓ Why Do We Need a VPC?
+Without a VPC, all resources would exist in a shared environment.
+A VPC provides:-
+- Network isolation
+- Better security
+- Controlled internet access
+- Private communication between AWS resources
+- Flexible network architecture
+It allows organizations to securely deploy applications without exposing every server to the internet.
+
+🏗️ Creating a VPC:-
+When creating a VPC, AWS requires:
+- VPC Name
+- IPv4 CIDR Block (Example: `10.0.0.0/16`)
+- AWS Region
+Example:
+VPC
+└── CIDR Block
+10.0.0.0/16
+After creating a VPC, you can divide it into multiple subnets.
+
+ 🌍 AWS Region:-
+A VPC exists inside a single AWS Region.
+Example Regions:-
+- US East (N. Virginia)
+- US East (Ohio)
+- Europe (Frankfurt)
+- Asia Pacific (Mumbai)
+- Asia Pacific (Singapore)
+
+ 🏢 Availability Zones:-
+Each AWS Region contains multiple Availability Zones (AZs).
+Example:-
+Asia Pacific (Mumbai)
+├── ap-south-1a
+├── ap-south-1b
+└── ap-south-1c
+
+Subnets are created inside Availability Zones.
+Deploying applications across multiple AZs improves:
+- High Availability
+- Fault Tolerance
+- Disaster Recovery
+
+📦 Subnets:-
+A subnet is a smaller network created inside a VPC.
+There are two types of subnets:
+
+-🌍 Public Subnet
+A Public Subnet has internet access through an Internet Gateway.
+Resources commonly deployed:-
+- Load Balancers
+- Bastion Hosts
+- Web Servers
+- NAT Gateway
+Characteristics:-
+- Public IP Address
+- Internet Accessible
+
+🔒 Private Subnet:-
+A Private Subnet does **not** have direct internet access.
+Resources commonly deployed:-
+- Application Servers
+- Database Servers
+- Internal APIs
+Characteristics:-
+- Private IP Addresses
+- Not directly accessible from the internet
+- More secure
+
+🌐 Internet Gateway (IGW):-
+An Internet Gateway enables communication between a VPC and the public internet.
+Functions:
+- Allows inbound traffic
+- Allows outbound traffic
+- Used by Public Subnets
+Without an Internet Gateway, public internet communication is not possible.
+
+🚪 NAT Gateway
+A NAT (Network Address Translation) Gateway allows instances in a **Private Subnet** to access the internet **without exposing their private IP addresses**.
+Example uses:-
+- Download software packages
+- Operating system updates
+- Security patches
+- Access external APIs
+ Benefits:-
+- Private servers remain hidden
+- Outbound internet access only
+- Improved security
+
+🛣️ Route Tables:-
+A Route Table determines where network traffic should go.
+Every subnet is associated with a route table.
+Example:
+Destination Target
+10.0.0.0/16 Local
+0.0.0.0/0 Internet Gateway
+Private subnets generally use a NAT Gateway instead of an Internet Gateway.
+
+🔐 Security Groups:-
+A Security Group acts as a virtual firewall for AWS resources.
+It controls:
+- Inbound Rules
+- Outbound Rules
+
+Example:
+| Port | Protocol | Purpose        |
+|------|----------|----------------|
+| 22   | SSH      | Remote Login   |
+| 80   | HTTP     | Website        |
+| 443  | HTTPS    | Secure Website |
+Only allowed ports are accessible.
+---
+
+⚖️ Public vs Private Subnet:-
+| Feature             | Public Subnet | Private Subnet |
+|---------------------|---------------|----------------|
+| Internet Access     | ✅ Yes        | ❌ No         |
+| Public IP           | ✅ Yes        | ❌ No         |
+| Internet Gateway    | ✅ Yes        | ❌ No         |
+| NAT Gateway Required| ❌ No         | ✅ Yes        |
+| Security            | Medium        | High           |
+
+🔄 VPC Architecture:-
+```
+Internet
+│
+│
+Internet Gateway
+│
+---------------------------------
+| |
+Public Subnet Private Subnet
+| |
+Elastic Load Balancer EC2 Application Server
+| |
+| Database Server
+|
+NAT Gateway
+```
+
+🔄 Request Flow Inside a VPC:-
+When a user accesses an application hosted inside AWS:
+
+Step 1:-
+The user sends a request from the internet.
+```
+User
+│
+▼
+Internet
+```
+Step 2:-
+The request reaches the **Internet Gateway**, which allows traffic into the VPC.
+```
+Internet
+│
+▼
+Internet Gateway
+``'
+
+Step 3:-
+The request enters the **Public Subnet**.
+A public-facing **Elastic Load Balancer (ELB)** receives the request.
+Internet Gateway
+│
+▼
+Elastic Load Balancer
+
+Step 4:-
+The Load Balancer forwards the request to its configured **Target Group**.
+```
+ELB
+│
+▼
+Target Group
+```
+Step 5:-
+The request reaches an EC2 instance inside the **Private Subnet**.
+Before allowing access, AWS checks the configured **Security Group**.
+If:
+- Inbound Rule matches
+- Correct Port is open
+- Protocol is allowed
+then the request is accepted,Otherwise, it is rejected.
+
+Step 6:-
+The application processes the request and sends the response back to the client.
+ 🌍 Private Subnet Internet Access:-
+Private instances cannot directly access the internet.
+When they need to:
+- Download software
+- Install packages
+- Perform updates
+they use a **NAT Gateway**.
+
+Example:
+```
+Private EC2
+│
+▼
+NAT Gateway
+│
+▼
+Internet
+```
+The outside world only sees the NAT Gateway's Public IP.
+The EC2 instance's Private IP remains hidden.
+---
+
+💡 Benefits of VPC:-
+- Secure network isolation
+- Custom IP addressing
+- Private communication
+- Controlled internet access
+- Flexible routing
+- High availability
+- Scalable architecture
+- Better security
+
+---
+
+📌 Best Practices :-
+- Create separate Public and Private Subnets.
+- Keep databases inside Private Subnets.
+- Use Security Groups to restrict traffic.
+- Use NAT Gateway for outbound internet access.
+- Deploy applications across multiple Availability Zones.
+- Follow the Principle of Least Privilege.
+- Regularly review route tables and security rules.
+---
+
+📚 Topics Covered :-
+- Amazon VPC
+- AWS Regions
+- Availability Zones
+- CIDR Block
+- Public Subnet
+- Private Subnet
+- Internet Gateway
+- NAT Gateway
+- Route Tables
+- Security Groups
+- Elastic Load Balancer (ELB)
+- Target Groups
+- VPC Request Flow
+
+---
+
+ 🎯 Summary :-
+Amazon VPC is the foundation of networking in AWS. It provides a secure and isolated virtual network where organizations can deploy applications with complete control over IP addressing, routing, and security.
+By combining VPCs, Public and Private Subnets, Internet Gateways, NAT Gateways, Route Tables, and Security Groups, AWS enables you to build scalable, secure, and highly available cloud architectures while protecting critical workloads from unnecessary internet exposure.
+---
+
+ 📖 Learning Progress:-
+- ✅ Amazon VPC
+- ✅ CIDR Blocks
+- ✅ AWS Regions
+- ✅ Availability Zones
+- ✅ Public Subnets
+- ✅ Private Subnets
+- ✅ Internet Gateway
+- ✅ NAT Gateway
+- ✅ Route Tables
+- ✅ Security Groups
+- ✅ Request Flow in VPC
+---
+⭐ Repository Purpose:-
+This repository contains my personal AWS learning notes. The objective is to simplify AWS networking concepts for beginners while serving as a quick revision guide for interviews, certifications, and hands-on practice.
+If these notes help you, consider giving this repository a ⭐.

@@ -2,9 +2,7 @@
 
 **Amazon Elastic Compute Cloud (EC2)** is one of the core AWS services that provides secure, scalable, and resizable virtual servers (instances) in the cloud. EC2 allows developers to launch applications without purchasing or maintaining physical hardware.
 
----
-
-# 📖 Table of Contents
+📖 Table of Contents
 - What is Amazon EC2?
 - Why EC2?
 - Benefits of EC2
@@ -16,8 +14,6 @@
 - Basic Linux Commands
 - Best Practices
 - Summary
-
----
 
 ☁️ What is Amazon EC2?
 Amazon Elastic Compute Cloud (EC2) is a web service that provides virtual servers in the AWS Cloud.
