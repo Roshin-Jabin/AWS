@@ -1,0 +1,440 @@
+# 🚀 Amazon EC2 (Elastic Compute Cloud)
+
+**Amazon Elastic Compute Cloud (EC2)** is one of the core AWS services that provides secure, scalable, and resizable virtual servers (instances) in the cloud. EC2 allows developers to launch applications without purchasing or maintaining physical hardware.
+
+---
+
+# 📖 Table of Contents
+
+- What is Amazon EC2?
+- Why EC2?
+- Benefits of EC2
+- EC2 Instance Types
+- Choosing an EC2 Instance
+- AWS Regions and Availability Zones
+- Launching an EC2 Instance
+- Connecting to EC2
+- Basic Linux Commands
+- Best Practices
+- Summary
+
+---
+
+# ☁️ What is Amazon EC2?
+
+Amazon Elastic Compute Cloud (EC2) is a web service that provides virtual servers in the AWS Cloud.
+
+Instead of buying physical servers, AWS allows you to launch virtual machines called **EC2 Instances**.
+
+EC2 provides:
+
+- Virtual Servers
+- Flexible Computing Power
+- On-demand Resources
+- Auto Scaling
+- Secure Infrastructure
+- Pay-as-you-go Pricing
+
+---
+
+# 🤔 Why EC2?
+
+Before cloud computing, organizations had to purchase physical servers.
+
+Challenges included:
+
+- Expensive hardware
+- Data center maintenance
+- Power and cooling costs
+- Hardware upgrades
+- Limited scalability
+- Long deployment time
+
+Amazon EC2 eliminates these problems by allowing users to launch virtual servers within minutes.
+
+---
+
+# ✅ Benefits of EC2
+
+- No physical server maintenance
+- Launch servers within minutes
+- Pay only for usage
+- Easily increase or decrease resources
+- Highly available
+- Scalable
+- Secure
+- Global infrastructure
+
+---
+
+# 🖥️ What is an EC2 Instance?
+
+An **EC2 Instance** is simply a virtual machine running in AWS.
+
+It includes:
+
+- CPU
+- Memory (RAM)
+- Storage
+- Operating System
+- Networking
+
+Applications are deployed on EC2 instances just like on physical servers.
+
+---
+
+# 📦 EC2 Instance Types
+
+AWS provides different instance families optimized for different workloads.
+
+## 1. General Purpose
+
+Balanced CPU, Memory, and Networking.
+
+Suitable for:
+
+- Web applications
+- Small databases
+- Development environments
+
+Example:
+
+- T3
+- T4g
+- M5
+
+---
+
+## 2. Compute Optimized
+
+High CPU performance.
+
+Suitable for:
+
+- High-performance applications
+- Gaming servers
+- Scientific computing
+- Batch processing
+
+Example:
+
+- C5
+- C6
+
+---
+
+## 3. Memory Optimized
+
+Large amount of RAM.
+
+Suitable for:
+
+- SAP Applications
+- Redis
+- In-memory databases
+- Big Data Analytics
+
+Example:
+
+- R5
+- X1
+
+---
+
+## 4. Storage Optimized
+
+High-speed storage with high IOPS.
+
+Suitable for:
+
+- NoSQL Databases
+- Data Warehousing
+- Large File Systems
+
+Example:
+
+- I3
+- D3
+
+---
+
+## 5. Accelerated Computing
+
+Uses GPUs or specialized hardware.
+
+Suitable for:
+
+- Machine Learning
+- Artificial Intelligence
+- Deep Learning
+- Video Processing
+- Graphics Rendering
+
+Example:
+
+- P Series
+- G Series
+
+---
+
+# 🎯 Choosing an EC2 Instance
+
+Always choose an instance based on your application's requirements.
+
+| Requirement | Recommended Instance |
+|-------------|----------------------|
+| Web Server | General Purpose |
+| CPU Intensive | Compute Optimized |
+| Database | Memory Optimized |
+| Storage Intensive | Storage Optimized |
+| AI / ML | Accelerated Computing |
+
+> Different instance types may run the same operating system, but pricing depends on the hardware resources allocated.
+
+---
+
+# 🌍 AWS Regions
+
+AWS has multiple Regions across the world.
+
+A Region is a geographical area where AWS maintains multiple data centers.
+
+Examples:
+
+- US East (N. Virginia)
+- US East (Ohio)
+- Europe (Frankfurt)
+- Asia Pacific (Mumbai)
+- Asia Pacific (Singapore)
+
+Choose the region closest to your users to reduce latency.
+
+---
+
+# 🏢 Availability Zones (AZ)
+
+Each AWS Region contains multiple Availability Zones.
+
+Availability Zones are physically separate data centers connected with high-speed networking.
+
+Benefits:
+
+- High Availability
+- Fault Tolerance
+- Disaster Recovery
+- Better Reliability
+
+Example:
+
+```
+US East (Ohio)
+
+├── us-east-2a
+├── us-east-2b
+└── us-east-2c
+```
+
+Deploying resources across multiple Availability Zones improves application availability.
+
+---
+
+# 🚀 Launching an EC2 Instance
+
+Basic steps:
+
+1. Log in to the AWS Management Console.
+2. Open the EC2 Dashboard.
+3. Click **Launch Instance**.
+4. Enter an instance name.
+5. Select an Amazon Machine Image (AMI).
+6. Choose an EC2 instance type.
+7. Create or select a Key Pair.
+8. Configure network settings.
+9. Allow SSH (Port 22).
+10. Launch the instance.
+
+---
+
+# 🔑 Key Pair
+
+A Key Pair is used to securely connect to an EC2 instance.
+
+It consists of:
+
+- Public Key (stored by AWS)
+- Private Key (.pem file downloaded by the user)
+
+Keep the private key safe. Without it, you cannot securely access your EC2 instance (unless other access methods are configured).
+
+---
+
+# 🔐 Security Groups
+
+A Security Group acts as a virtual firewall for an EC2 instance.
+
+Common inbound rules:
+
+| Port | Protocol | Purpose |
+|------|----------|----------|
+| 22 | SSH | Remote Login |
+| 80 | HTTP | Web Traffic |
+| 443 | HTTPS | Secure Web Traffic |
+
+---
+
+# 💻 Connecting to an EC2 Instance
+
+Using SSH:
+
+```bash
+chmod 400 my-key.pem
+
+ssh -i my-key.pem ubuntu@<Public-IP>
+```
+
+For Amazon Linux:
+
+```bash
+ssh -i my-key.pem ec2-user@<Public-IP>
+```
+
+For Ubuntu:
+
+```bash
+ssh -i my-key.pem ubuntu@<Public-IP>
+```
+
+---
+
+# 🐧 Basic Linux Commands
+
+Update packages:
+
+```bash
+sudo apt update
+```
+
+Upgrade packages:
+
+```bash
+sudo apt upgrade -y
+```
+
+Check current user:
+
+```bash
+whoami
+```
+
+Check operating system:
+
+```bash
+cat /etc/os-release
+```
+
+List files:
+
+```bash
+ls
+```
+
+Present working directory:
+
+```bash
+pwd
+```
+
+Change directory:
+
+```bash
+cd
+```
+
+Create a directory:
+
+```bash
+mkdir project
+```
+
+Remove a directory:
+
+```bash
+rm -rf project
+```
+
+---
+
+# ⚡ EC2 Features
+
+- Elastic Computing
+- On-demand Instances
+- Multiple Instance Types
+- Secure Networking
+- Auto Scaling Support
+- Elastic IP Support
+- Load Balancer Integration
+- Global Availability
+
+---
+
+# 📌 Best Practices
+
+- Use IAM users instead of the Root User.
+- Choose the correct instance type.
+- Store private keys securely.
+- Enable Security Groups with minimum required ports.
+- Stop unused instances to reduce cost.
+- Use multiple Availability Zones for high availability.
+- Regularly update your operating system.
+- Monitor resources using Amazon CloudWatch.
+
+---
+
+# 📚 Topics Covered
+
+- Amazon EC2
+- Virtual Machines
+- EC2 Instances
+- EC2 Instance Types
+- General Purpose Instances
+- Compute Optimized Instances
+- Memory Optimized Instances
+- Storage Optimized Instances
+- Accelerated Computing
+- AWS Regions
+- Availability Zones
+- Key Pair
+- Security Groups
+- SSH
+- Linux Commands
+
+---
+
+# 🎯 Summary
+
+Amazon EC2 is a core AWS service that provides scalable virtual servers in the cloud. It removes the need to purchase and maintain physical hardware while allowing applications to be deployed quickly and efficiently.
+
+By selecting the appropriate EC2 instance type, deploying resources in the right AWS Region and Availability Zone, and following security best practices, organizations can build reliable, scalable, and cost-effective cloud applications.
+
+---
+
+## 📖 Learning Progress
+
+- ✅ Amazon EC2 Overview
+- ✅ Benefits of EC2
+- ✅ EC2 Instance Types
+- ✅ AWS Regions
+- ✅ Availability Zones
+- ✅ Launching EC2 Instances
+- ✅ Key Pairs
+- ✅ Security Groups
+- ✅ SSH Access
+- ✅ Basic Linux Commands
+
+---
+
+## ⭐ Repository Purpose
+
+This repository contains my personal AWS learning notes. The goal is to simplify AWS concepts for beginners while serving as a quick revision guide for interviews and hands-on practice.
+
+If these notes help you, consider giving the repository a ⭐.
