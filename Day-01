@@ -1,10 +1,10 @@
-# ☁️ AWS Learning Notes
+☁️ AWS Learning Notes
 
-> **Personal AWS learning notes** documenting the fundamentals of Cloud Computing and AWS Identity and Access Management (IAM). These notes are created as part of my AWS learning journey and are intended for quick revision and beginner-friendly understanding.
+ **Personal AWS learning notes** documenting the fundamentals of Cloud Computing and AWS Identity and Access Management (IAM). These notes are created as part of my AWS learning journey and are intended for quick revision and beginner-friendly understanding.
 
 ---
 
-## 📖 Table of Contents
+ 📖 Table of Contents
 
 - [Cloud Computing](#-cloud-computing)
 - [Cloud Deployment Models](#-cloud-deployment-models)
@@ -23,13 +23,13 @@
 
 ---
 
-# ☁️ Cloud Computing
+1) ☁️ Cloud Computing
 
 Cloud Computing is the delivery of computing services such as servers, storage, networking, databases, and applications over the internet.
 
 Instead of purchasing and maintaining physical hardware, organizations can create Virtual Machines (VMs) and deploy applications from anywhere in the world.
 
-## Traditional Infrastructure
+* Traditional Infrastructure
 
 - Purchase physical servers
 - Install operating systems
@@ -38,7 +38,7 @@ Instead of purchasing and maintaining physical hardware, organizations can creat
 - Monitor servers
 - Upgrade infrastructure manually
 
-## Cloud Infrastructure
+* Cloud Infrastructure
 
 - Create Virtual Machines (VMs)
 - Deploy applications quickly
@@ -50,11 +50,11 @@ Instead of purchasing and maintaining physical hardware, organizations can creat
 
 # 🌍 Cloud Deployment Models
 
-## 1. Private Cloud
+ 1. Private Cloud
 
 A **Private Cloud** is dedicated to a single organization.
 
-### Features
+Features:-
 
 - Infrastructure owned by the organization
 - High level of security
@@ -62,13 +62,13 @@ A **Private Cloud** is dedicated to a single organization.
 - Managed internally or by a private provider
 - Suitable for organizations with strict compliance requirements
 
-### Example
+Example:-
 
 A company maintaining its own data center and virtualization infrastructure.
 
 ---
 
-## 2. Public Cloud
+2. Public Cloud
 
 A **Public Cloud** is owned and maintained by cloud providers.
 
@@ -90,11 +90,11 @@ Customers simply request cloud resources like Virtual Machines, Storage, or Data
 
 ---
 
-# ⭐ Why Public Cloud is Popular
+⭐ Why Public Cloud is Popular
 
 Public cloud has become the preferred choice for many organizations because it eliminates infrastructure management.
 
-## Advantages
+Advantages:-
 
 - No data center maintenance
 - No physical server management
@@ -108,11 +108,11 @@ Public cloud has become the preferred choice for many organizations because it e
 
 ---
 
-# 🚀 Why AWS?
+ 🚀 Why AWS?
 
 AWS (Amazon Web Services) is one of the world's leading cloud platforms.
 
-## Why AWS is Popular
+Why AWS is Popular?
 
 - Pioneer in cloud computing
 - Largest global cloud infrastructure
@@ -127,11 +127,11 @@ Many organizations started their cloud journey using AWS because of its maturity
 
 ---
 
-# 🔄 Why Companies Migrate to Public Cloud
+ 🔄 Why Companies Migrate to Public Cloud?
 
 Organizations are increasingly moving from traditional infrastructure to the public cloud.
 
-## Reasons
+Reasons:-
 
 - Cost optimization
 - Reduced infrastructure maintenance
@@ -144,7 +144,7 @@ Organizations are increasingly moving from traditional infrastructure to the pub
 
 ---
 
-# 🛠 Getting Started with AWS
+ 🛠 Getting Started with AWS:-
 
 Typical first steps:
 
@@ -157,7 +157,7 @@ Typical first steps:
 
 ---
 
-# 🔐 AWS IAM (Identity and Access Management)
+🔐 AWS IAM (Identity and Access Management):-
 
 AWS IAM is a service that manages **Authentication** and **Authorization** for AWS resources.
 
@@ -173,7 +173,7 @@ IAM allows administrators to:
 
 ---
 
-## 👤 IAM Users
+👤 IAM Users:-
 
 An IAM User represents an individual who requires access to AWS.
 
@@ -192,7 +192,7 @@ Instead, create IAM users with only the permissions they require.
 
 ---
 
-## 👥 IAM Groups
+👥 IAM Groups:-
 
 IAM Groups help simplify permission management.
 
@@ -219,7 +219,7 @@ If a permission is attached to the Developers Group, every member automatically 
 
 ---
 
-## 🎭 IAM Roles
+ 🎭 IAM Roles:-
 
 IAM Roles provide temporary permissions.
 
@@ -237,7 +237,7 @@ Roles automatically grant temporary permissions whenever required.
 
 ---
 
-# 🔑 Authentication vs Authorization
+ 🔑 Authentication vs Authorization:-
 
 ## Authentication
 
@@ -294,7 +294,7 @@ Access AWS Services
 
 ---
 
-# 📌 Best Practices
+📌 Best Practices
 
 - Never use the Root User for daily activities.
 - Follow the Principle of Least Privilege.
@@ -306,7 +306,7 @@ Access AWS Services
 
 ---
 
-# 📚 Topics Covered
+ 📚 Topics Covered
 
 - Cloud Computing
 - Virtual Machines (VM)
@@ -326,7 +326,7 @@ Access AWS Services
 
 ---
 
-# 🎯 Summary
+🎯 Summary
 
 Cloud Computing allows organizations to deploy applications without managing physical infrastructure.
 
@@ -338,7 +338,7 @@ Understanding these core concepts provides a strong foundation for learning adva
 
 ---
 
-## 📖 Learning Progress
+ 📖 Learning Progress
 
 - ✅ Cloud Computing Basics
 - ✅ Private Cloud
@@ -354,7 +354,7 @@ Understanding these core concepts provides a strong foundation for learning adva
 
 ---
 
-## ⭐ Repository Purpose
+##⭐ Repository Purpose
 
 This repository contains my personal AWS learning notes created while studying Amazon Web Services. The goal is to build a beginner-friendly reference that can be used for revision and interview preparation.
 
