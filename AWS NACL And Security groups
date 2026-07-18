@@ -1,0 +1,78 @@
+🔐 AWS Network ACL (NACL) vs Security Group
+A beginner-friendly AWS networking project explaining the differences between **Network ACLs (NACLs)** and **Security Groups**, including architecture, comparison, and a practical hands-on demonstration.
+
+📖 Overview
+AWS provides two important security layers to control network traffic:
+**Security Groups**         –     Instance-level firewall
+**Network ACLs (NACLs)**    –     Subnet-level firewall
+This presentation explains how both services work together to secure AWS resources.
+
+ 📂 Contents
+- Introduction
+- Why NACLs and Security Groups are needed
+- Security Group Overview
+- Network ACL Overview
+- Stateful vs Stateless
+
+🏗️ Architecture
+                Internet
+                    │
+            ┌───────────────┐
+            │     NACL      │
+            │ (Subnet Level)│
+            └───────┬───────┘
+                    │
+            Public Subnet
+                    │
+            ┌───────────────┐
+            │ Security Group│
+            │ (EC2 Level)   │
+            └───────┬───────┘
+                    │
+              Ubuntu EC2
+
+🚀 Hands-on Demonstration
+The practical demo includes:
+- Creating a VPC
+- Creating a Public Subnet
+- Launching an Ubuntu EC2 Instance
+- Configuring Security Groups
+- Creating a Custom Network ACL
+- Allowing SSH (Port 22)
+- Allowing HTTP (Port 8000)
+- Running a Python Web Server
+
+```bash
+python3 -m http.server 8000
+```
+
+- Testing inbound and outbound traffic
+- Understanding how NACLs and Security Groups interact
+
+📊 Security Group vs Network ACL
+
+| Feature       | Security Group        | Network ACL                |
+|---------------|-----------------------|----------------------------|
+| Level         | EC2 Instance          | Subnet                     |
+| Type          | Stateful              | Stateless                  |
+| Rules         | Allow Only            | Allow & Deny               |
+| Return Traffic| Automatically Allowed | Must be Explicitly Allowed |
+| Evaluation    | All Rules             | Rule Number Order          |
+
+
+ 🎯 Key Learning
+- Security Groups protect individual EC2 instances.
+- Network ACLs protect entire subnets.
+- Security Groups are **stateful**.
+- NACLs are **stateless**.
+- Both work together to provide layered security in AWS.
+
+To understand NACL clearly:
+In NACL, Inbound rules: The traffic is checked in ascending order i.e. if application is on port 8000 but you have defined as below:
+
+Role number      type           protocol   port range   source        Allow/Deny
+100             custom tcp       TCP(6)     8000         0.0.0.0/0      Deny
+200              All traffic      All        All         0.0.0.0/0       Allow
+
+Since NACL goes by Ascending order of role no i.e. first 100 is checked and then goes to 200 even though in 200 role no. you are allowing all traffic but in 100 port: 8000 is denied and application wont be accesible to the external user. this way a devops engg can make the applicattion secure.
+⭐ If you found this project helpful, consider giving the repository a **Star**.
