@@ -1,0 +1,263 @@
+☁️ AWS Amazon S3 (Simple Storage Service)
+Amazon Simple Storage Service (Amazon S3) is a highly scalable, secure, and durable **object storage service** offered by AWS. It allows businesses to store and retrieve any amount of data from anywhere over the internet.
+This repository contains my study notes based on the **official AWS documentation** and my understanding while learning Amazon S3.
+
+ 📖 What is Amazon S3?
+Amazon S3 (Simple Storage Service) is an object storage service that stores data as **objects** inside **buckets**.
+It is designed to provide:
+- ✅ High Durability
+- ✅ High Availability
+- ✅ Unlimited Scalability
+- ✅ Security
+- ✅ Cost-effective Storage
+- ✅ High Performance
+Whether you're storing application files, backups, videos, images, or logs, Amazon S3 can securely store virtually unlimited amounts of data.
+
+❓ Why Do We Need Amazon S3?
+Imagine you're building an application where users upload photos, videos, documents, or backups every day.
+As the application grows:
+- Storage space becomes limited.
+- Managing storage servers becomes difficult.
+- Hardware failures may cause data loss.
+- Scaling traditional storage becomes expensive.
+Amazon S3 solves these challenges by providing virtually unlimited storage with industry-leading durability, security, and scalability.
+
+🏗️ Amazon S3 Architecture
+                   Users
+                      │
+               Internet (HTTPS)
+                      │
+          ┌─────────────────────────┐
+          │      Amazon S3 Bucket   │
+          └─────────────────────────┘
+             │        │        │
+           Images   Videos   Backups
+            │        │        │
+          Documents  Logs   CSV Files
+
+ Features:
+  • Versioning
+  • Encryption
+  • Lifecycle Rules
+  • Replication
+
+📦 Core Components
+Bucket:- A **Bucket** is a container used to store objects in Amazon S3.
+Each bucket must have:
+- A globally unique name
+- A selected AWS Region
+- Bucket policies for security
+  Example:
+  company-backups
+  my-images-storage
+  employee-documents
+
+Object:-An **Object** is a file stored inside a bucket.
+Examples:
+- Image
+- Video
+- PDF
+- Excel File
+- Backup
+- ZIP File
+Each object consists of:
+- Data
+- Key (Object Name)
+- Metadata
+Maximum object size: 5 TB
+
+Object Key:-Every object has a unique identifier called a **Key**.
+Example:
+images/profile.png
+documents/resume.pdf
+backups/database.zip
+
+⭐ Key Features of Amazon S3:-
+- Highly Durable (99.999999999%)
+- Highly Available
+- Unlimited Scalability
+- Secure Storage
+- High Performance
+- Cost Effective
+- Object Versioning
+- Lifecycle Management
+- Cross Region Replication
+- Event Notifications
+
+💾 Amazon S3 Storage Classes
+ 1️⃣ S3 Standard
+Designed for frequently accessed data.
+- Low latency
+- High throughput
+- 99.99% availability
+- 11 nines durability
+Use Cases:-
+- Websites
+- Mobile Applications
+- Frequently accessed files
+
+2️⃣ S3 Intelligent-Tiering
+Automatically moves data between storage tiers depending on how frequently it is accessed.This helps reduce storage costs without impacting application performance.
+Best For:-
+- Unknown access patterns
+- Long-term storage
+- Cost optimization
+
+3️⃣ S3 Standard-Infrequent Access (Standard-IA)
+Designed for data that is accessed less frequently but must be retrieved quickly whenever needed.
+Provides lower storage costs while maintaining high durability.
+Best For:-
+- Backups
+- Disaster Recovery
+- Long-term storage
+
+4️⃣ S3 One Zone-Infrequent Access (One Zone-IA)
+Stores data in a single Availability Zone, making it less expensive than Standard-IA.
+Suitable for data that can be recreated if needed.
+Best For:-
+- Secondary backups
+- Temporary files
+- Re-creatable data
+
+5️⃣ S3 Glacier Instant Retrieval
+Provides low-cost archival storage while allowing data retrieval within milliseconds.
+Ideal for archived data that still requires immediate access.
+Best For:-
+- Medical Records
+- Image Archives
+- Media Libraries
+
+6️⃣ S3 Glacier Flexible Retrieval
+Offers very low-cost archival storage for data that is rarely accessed.
+Retrieval time ranges from 1 minute to 12 hours.
+Best For:-
+- Compliance archives
+- Backup storage
+- Long-term business records
+
+7️⃣ S3 Glacier Deep Archive
+The lowest-cost Amazon S3 storage class.
+Retrieval can take up to 12 hours, making it suitable for data that is rarely accessed.
+Best For:-
+- Legal Documents
+- Financial Records
+- Regulatory Compliance
+- Long-term Archival
+
+🔄 Versioning
+Versioning allows Amazon S3 to keep multiple versions of an object.
+Benefits:
+- Recover deleted files
+- Restore previous versions
+- Prevent accidental overwrites
+
+Example:
+    resume.pdf (v1)
+        ↓
+    resume.pdf (v2)
+        ↓
+    resume.pdf (v3)
+
+🔐 Security
+Amazon S3 provides multiple layers of security.
+- IAM Policies
+- Bucket Policies
+- Block Public Access
+- Encryption at Rest
+- Encryption in Transit
+- Versioning
+- MFA Delete
+Encryption options include:
+- SSE-S3
+- SSE-KMS
+- SSE-C
+
+♻️ Lifecycle Policies
+Lifecycle Policies automatically move data to lower-cost storage classes or delete old objects.
+Example:
+        S3 Standard
+           ↓
+        30 Days
+           ↓
+        Standard-IA
+           ↓
+        90 Days
+           ↓
+        Glacier
+           ↓
+        Delete
+This helps reduce storage costs automatically.
+
+🌎 Cross Region Replication (CRR)
+Cross Region Replication automatically copies objects from one AWS Region to another.
+Benefits:
+- Disaster Recovery
+- High Availability
+- Compliance Requirements
+
+🌐 Static Website Hosting
+Amazon S3 can host static websites.
+Supported files include:
+- HTML
+- CSS
+- JavaScript
+- Images
+
+Perfect for:
+- Portfolio Websites
+- Landing Pages
+- Documentation Sites
+
+📢 Event Notifications
+Amazon S3 can trigger AWS services whenever an event occurs.
+Examples:
+- AWS Lambda
+- Amazon SNS
+- Amazon SQS
+Example:
+    File Uploaded
+        ↓
+    Amazon S3
+        ↓
+    AWS Lambda
+        ↓
+  Resize Image
+
+💰 Why Amazon S3?
+Amazon S3 helps organizations:
+- Store unlimited data
+- Reduce storage costs
+- Improve security
+- Automatically scale
+- Protect data with 11 nines durability
+- Simplify backup and disaster recovery
+Instead of managing storage infrastructure, developers can focus on building applications while AWS securely stores and manages their data.
+
+🌍 Real-World Use Cases
+Amazon S3 is widely used for:
+- Application Backups
+- Static Website Hosting
+- Data Lakes
+- Log Storage
+- Image Storage
+- Video Streaming
+- Disaster Recovery
+- Machine Learning Datasets
+- Software Downloads
+
+📝 Key Takeaways
+- Amazon S3 is an object storage service.
+- Data is stored as Objects inside Buckets.
+- Buckets have globally unique names.
+- Maximum object size is **5 TB**.
+- Amazon S3 provides **99.999999999% (11 nines) durability**.
+- Supports multiple storage classes for cost optimization.
+- Versioning protects against accidental deletion.
+- Lifecycle Policies automate storage management.
+- Encryption secures data at rest and in transit.
+- Cross Region Replication improves disaster recovery.
+
+⭐ Connect With Me
+I'm currently learning AWS Cloud and sharing my learning journey one service at a time.
+If you found these notes helpful, feel free to ⭐ this repository and follow my AWS learning journey!
+Happy Learning! 🚀
